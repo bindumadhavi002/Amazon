@@ -39,7 +39,11 @@ async function loadPage() {
 
   function productsListHTML(order) {
     let productsListHTML = '';
-
+    //empty order
+    if (!order.products) {
+      console.warn(`Order ${order.id} has no products.`);
+      return '';
+    }
     order.products.forEach((productDetails) => {
       const product = getProduct(productDetails.productId);
 
